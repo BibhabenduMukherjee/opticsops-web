@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV !== "production";
+
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",   // Next.js App Router requires unsafe-inline
+  // unsafe-eval: React dev mode only (callstack reconstruction); omitted in production
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",    // Tailwind v4 inline styles
   "font-src 'self'",                      // Geist self-hosted via next/font
   "img-src 'self' data:",
