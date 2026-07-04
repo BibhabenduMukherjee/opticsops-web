@@ -37,10 +37,10 @@ export function Nav() {
           GitHub
         </a>
         <Link
-          href="/"
+          href="/login"
           className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-3 py-1.5 text-sky-300 transition hover:bg-sky-500/20"
         >
-          Get started
+          Sign in
         </Link>
       </nav>
     </header>
