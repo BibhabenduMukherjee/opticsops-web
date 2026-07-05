@@ -33,7 +33,7 @@ NODE_OPTIONS="--import @opticsops/agent/register" node app.js`,
   {
     n: "4",
     title: "Open your service map",
-    code: "https://opticsops-ingest.../dashboard?apiKey=oo_your_key",
+    code: "https://opticsops-ingest.../dashboard#apiKey=oo_your_key",
   },
 ];
 

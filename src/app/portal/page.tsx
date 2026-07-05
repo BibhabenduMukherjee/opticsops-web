@@ -76,8 +76,10 @@ export default function PortalPage() {
   // Only build a keyed URL when we actually have the plaintext (just regenerated).
   // Otherwise link to the bare dashboard — it already prompts for a key and
   // remembers it in localStorage for anyone who's visited before.
+  // Fragment (#), not a query string: fragments are never sent to the server,
+  // so the key never lands in Cloud Run's access logs when this link opens.
   const dashboardUrl = data?.apiKey
-    ? `${process.env.NEXT_PUBLIC_INGEST_URL ?? ''}/dashboard?apiKey=${data.apiKey}`
+    ? `${process.env.NEXT_PUBLIC_INGEST_URL ?? ''}/dashboard#apiKey=${data.apiKey}`
     : `${process.env.NEXT_PUBLIC_INGEST_URL ?? ''}/dashboard`;
 
   if (loading) {
