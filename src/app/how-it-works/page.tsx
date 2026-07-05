@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 
 export const metadata = {
@@ -206,8 +207,8 @@ export default function HowItWorksPage() {
             <h3 className="mb-3 text-sm font-semibold text-amber-300">Honest limitations</h3>
             <ul className="space-y-2 text-xs leading-relaxed text-slate-400">
               <li>
-                <strong className="text-slate-300">Node.js only.</strong> The agent patches Node's
-                built-in <code className="text-sky-400">http</code> / <code className="text-sky-400">https</code> modules.
+                <strong className="text-slate-300">Node.js only.</strong> The agent patches
+                Node&apos;s built-in <code className="text-sky-400">http</code> / <code className="text-sky-400">https</code> modules.
                 Python, Go, Java — not supported yet.
               </li>
               <li>
@@ -232,6 +233,16 @@ export default function HowItWorksPage() {
               </li>
             </ul>
           </div>
+        </section>
+
+        <section className="mt-8 rounded-xl border border-slate-700/50 bg-slate-800/30 px-6 py-5 text-center">
+          <p className="text-sm text-slate-400">
+            Want the full architecture — the datastore, the isolation model, how keys and sessions
+            are handled?{" "}
+            <Link href="/arch" className="text-sky-400 hover:text-sky-300 transition">
+              Read the architecture docs →
+            </Link>
+          </p>
         </section>
 
       </main>

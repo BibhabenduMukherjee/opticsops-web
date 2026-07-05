@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Nav } from "@/components/nav";
 
 export const metadata = {
@@ -265,17 +266,27 @@ export default function ComparePage() {
           </div>
         </section>
 
+        {/* Architecture link */}
+        <section className="mb-12 rounded-xl border border-slate-700/50 bg-slate-800/30 px-6 py-5 text-center">
+          <p className="text-sm text-slate-400">
+            Wondering exactly how the single-VM tradeoff and data isolation work?{" "}
+            <Link href="/arch" className="text-sky-400 hover:text-sky-300 transition">
+              Read the architecture docs →
+            </Link>
+          </p>
+        </section>
+
         {/* CTA */}
         <section className="text-center">
           <p className="text-slate-400 text-sm mb-4">
             If OpticsOps fits your situation — it is free to try with no credit card.
           </p>
-          <a
+          <Link
             href="/"
             className="inline-block rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:from-sky-400 hover:to-blue-500"
           >
             Get your API key →
-          </a>
+          </Link>
         </section>
 
       </main>

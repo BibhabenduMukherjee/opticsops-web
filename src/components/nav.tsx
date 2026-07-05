@@ -14,6 +14,9 @@ export function Nav() {
         <Link href="/how-it-works" className="transition hover:text-sky-400">
           How it works
         </Link>
+        <Link href="/arch" className="transition hover:text-sky-400">
+          Architecture
+        </Link>
         <Link href="/compare" className="transition hover:text-sky-400">
           Compare
         </Link>
