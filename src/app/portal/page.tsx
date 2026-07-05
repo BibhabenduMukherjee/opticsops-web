@@ -8,7 +8,12 @@ interface ProjectData {
   projectName: string;
   email: string;
   maskedApiKey: string;
-  apiKey: string;
+  /**
+   * Only present immediately after regenerating — the backend hashes keys at
+   * rest and never persists the plaintext, so /v1/portal/me can't return it
+   * on a normal page load. Undefined means "already hidden forever."
+   */
+  apiKey?: string;
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -68,9 +73,12 @@ export default function PortalPage() {
     }
   }
 
-  const dashboardUrl = data
+  // Only build a keyed URL when we actually have the plaintext (just regenerated).
+  // Otherwise link to the bare dashboard — it already prompts for a key and
+  // remembers it in localStorage for anyone who's visited before.
+  const dashboardUrl = data?.apiKey
     ? `${process.env.NEXT_PUBLIC_INGEST_URL ?? ''}/dashboard?apiKey=${data.apiKey}`
-    : '';
+    : `${process.env.NEXT_PUBLIC_INGEST_URL ?? ''}/dashboard`;
 
   if (loading) {
     return (
@@ -117,19 +125,27 @@ export default function PortalPage() {
           <div className="rounded-xl border border-slate-700/50 bg-slate-800/40 p-6">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-sm font-semibold text-slate-200">API Key</h2>
-              <button
-                onClick={() => setShowFullKey((v) => !v)}
-                className="text-xs text-slate-500 hover:text-slate-300 transition"
-              >
-                {showFullKey ? 'Hide' : 'Reveal'}
-              </button>
+              {data.apiKey && (
+                <button
+                  onClick={() => setShowFullKey((v) => !v)}
+                  className="text-xs text-slate-500 hover:text-slate-300 transition"
+                >
+                  {showFullKey ? 'Hide' : 'Reveal'}
+                </button>
+              )}
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3">
               <code className="flex-1 font-mono text-sm text-slate-300 break-all">
-                {showFullKey ? data.apiKey : data.maskedApiKey}
+                {data.apiKey && showFullKey ? data.apiKey : data.maskedApiKey}
               </code>
-              <CopyButton text={data.apiKey} />
+              {data.apiKey && <CopyButton text={data.apiKey} />}
             </div>
+            {!data.apiKey && (
+              <p className="mt-2 text-xs text-slate-500">
+                For your security, the full key is only ever shown once — right after it&apos;s
+                created or regenerated. Check the welcome email, or regenerate to get a new one.
+              </p>
+            )}
             <div className="mt-4 flex items-center gap-3">
               {confirmRegen ? (
                 <>
