@@ -49,10 +49,10 @@ export default function ArchV2Page() {
 
         <section className="mb-14">
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs font-bold text-emerald-400">
+            <span className="rounded-full border border-slate-600/40 bg-slate-800/40 px-2.5 py-1 font-mono text-xs font-bold text-slate-400">
               v2
             </span>
-            <span className="text-xs uppercase tracking-wider text-slate-500">Current</span>
+            <span className="text-xs uppercase tracking-wider text-slate-500">Previous</span>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Reliability &amp; security hardening
@@ -63,7 +63,10 @@ export default function ArchV2Page() {
               v1
             </Link>{" "}
             still holds — this is what got added on top of it. Four things worth knowing if
-            you&apos;re deciding whether to point production traffic at this.
+            you&apos;re deciding whether to point production traffic at this.{" "}
+            <Link href="/arch/v3" className="text-sky-400 hover:text-sky-300 transition">
+              Read v3 for what&apos;s changed since →
+            </Link>
           </p>
         </section>
 
@@ -112,8 +115,9 @@ export default function ArchV2Page() {
               project, one login per account. Fine for a small team, not built for an enterprise org chart yet.
             </li>
             <li>
-              <strong className="text-slate-300">Early beta.</strong> This page will get a v3 the next
-              time something material changes — it&apos;s a record, not a permanent guarantee.
+              <strong className="text-slate-300">Early beta.</strong> Each version here is a record of
+              what was true at the time, not a permanent guarantee — see{" "}
+              <Link href="/arch/v3" className="text-sky-400 hover:text-sky-300">v3</Link> for what&apos;s current.
             </li>
           </ul>
         </section>

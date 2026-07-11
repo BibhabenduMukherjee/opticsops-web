@@ -8,12 +8,20 @@ export const metadata = {
 
 const versions = [
   {
-    href: "/arch/v2",
-    tag: "v2",
+    href: "/arch/v3",
+    tag: "v3",
     status: "Current",
     statusColor: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
+    title: "Cross-instance consistency",
+    desc: "How sign-up, key security, and usage limits stay correct while our backend runs across multiple instances — written for anyone deciding whether to trust us with their telemetry.",
+  },
+  {
+    href: "/arch/v2",
+    tag: "v2",
+    status: "Previous",
+    statusColor: "border-slate-600/40 bg-slate-800/40 text-slate-400",
     title: "Reliability & security hardening",
-    desc: "Everything in v1, plus how we handle API keys, login sessions, and per-project fair-use limits — written for anyone deciding whether to trust us with their telemetry.",
+    desc: "Everything in v1, plus how we handle API keys, login sessions, and per-project fair-use limits.",
   },
   {
     href: "/arch/v1",
